@@ -4,7 +4,7 @@
       <li v-for="item in folders" :key="item.id">
         {{item.name}}
          <template>
-
+           <tree-item :data="data.children"></tree-item>
          </template>
       </li>
     </ul>
