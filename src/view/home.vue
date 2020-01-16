@@ -1,458 +1,191 @@
-
 <template>
   <div id="home">
-    <ul class="tree">
-      <li v-for="item in folders" :key="item.id">
-        {{item.name}}
-        <ul>
-          <li v-for="e in item.children" :key="e.id">
-            {{e.name}}
-            <ul>
-              <li v-for="f in e.children" :key="f.id">{{f.name}}</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <button>add node</button>
+    <Tree :data ="tree" />
   </div>
 </template>
-
 <script>
-import { mapGetters } from "vuex";
+import Tree from '../components/tree'
 export default {
-  name: "Home",
+  name: 'Home',
+  components: {
+    [Tree.name]: Tree
+  },
   data() {
     return {
-      data: [
+      tree: [
         {
-          id: 5208259329,
-          name: "Online Storage",
-          owner_id: 536572161,
-          owner_uid: "u536572161u",
-          owner: "paulxiaooo@gmail.com",
-          user_uid: "u536572161u",
-          storagedns: "8534460157540856430",
-          storagetype: "SYSTEM",
-          physicalstoragetype: "SYSTEM",
-          storageservicetype: "AMAZON",
-          status: "online",
-          remarks: null,
-          rootfolder_id: 5208259585,
-          rootfolder_name: "Online Storage",
-          rootfolder_haschild: "Y",
-          rootfolder_twofactored: "N",
-          rootfolder_parent_twofactored_ids: [],
-          rootbackupfolder_id: 5208260097,
-          permissionbitmask: 255,
-          twofactored_ids: [],
-          assigneduserpoints: [],
-          subscribeduser_id: 536572161,
-          assigningtype: null,
-          mirrorassigning_activated: "N",
-          total_quota: 2147483648,
-          used_quota_files: 139680103,
-          used_quota_backups: 0,
-          used_quota_mirrors: 0,
-          used_ratio: 7,
-          anymodified: 1576726272620923,
-          created: 1554804133,
-          modified: 1554804133,
-          storage_id: 5208259329,
-          children: [
+          id: 'device',
+          name: 'device',
+          type: 'device',
+          active: false,
+          expanded: true,
+          children: [],
+          dropdown: [
             {
-              id: 5409084417,
-              name: "122",
-              owner_id: 536572161,
-              owner_uid: "u536572161u",
-              owner: "paulxiaooo@gmail.com",
-              storage_id: 5208259329,
-              storagetype: "SYSTEM",
-              storageservicetype: "AMAZON",
-              size: 0,
-              sizelimit: -1,
-              parent_id: 5208259585,
-              type: "folder",
-              created: 1577427933,
-              modified: 1577427933,
-              trashed: "N",
-              moved_to_trash: "N",
-              permissionbitmask: 255,
-              usershare_id: null,
-              publicshare_id: null,
-              shareuser_ids: [],
-              users: [],
-              contact_ids: [],
-              contacts: [],
-              permissionbitmasks: [],
-              isprivates: [],
-              messages: [],
-              twofactoreds: [],
-              end_dates: [],
-              list_ids: [],
-              dogtag_ids: [],
-              haschild: "N",
-              anymodified: 1577427933804268,
-              twofactored: "N",
-              secured: "N",
-              parent_twofactored_ids: [],
-              parent_twofactored_shareuser_ids: [],
-              cnt_picture: 0,
-              cnt_spreadsheet: 0,
-              cnt_video: 0,
-              cnt_text: 0,
-              cnt_pdf: 0,
-              cnt_presentation: 0,
-              cnt_audio: 0,
-              cnt_other: 0,
-              netsuiteid: null,
-              assigned: "N",
-              children: null,
-              level: 2,
-              icon: " icon-folder icon-folder",
-              active: true
+              icon: 'storage-icon icon_add_device',
+              value: 'add_device',
+              label: 'add_device'
             },
             {
-              id: 5409084673,
-              name: "213",
-              owner_id: 536572161,
-              owner_uid: "u536572161u",
-              owner: "paulxiaooo@gmail.com",
-              storage_id: 5208259329,
-              storagetype: "SYSTEM",
-              storageservicetype: "AMAZON",
-              size: 0,
-              sizelimit: -1,
-              parent_id: 5208259585,
-              type: "folder",
-              created: 1577428003,
-              modified: 1577428003,
-              trashed: "N",
-              moved_to_trash: "N",
-              permissionbitmask: 255,
-              usershare_id: null,
-              publicshare_id: null,
-              shareuser_ids: [],
-              users: [],
-              contact_ids: [],
-              contacts: [],
-              permissionbitmasks: [],
-              isprivates: [],
-              messages: [],
-              twofactoreds: [],
-              end_dates: [],
-              list_ids: [],
-              dogtag_ids: [],
-              haschild: "N",
-              anymodified: 1577428003622380,
-              twofactored: "N",
-              secured: "N",
-              parent_twofactored_ids: [],
-              parent_twofactored_shareuser_ids: [],
-              cnt_picture: 0,
-              cnt_spreadsheet: 0,
-              cnt_video: 0,
-              cnt_text: 0,
-              cnt_pdf: 0,
-              cnt_presentation: 0,
-              cnt_audio: 0,
-              cnt_other: 0,
-              netsuiteid: null,
-              assigned: "N",
-              children: null,
-              level: 2,
-              icon: " icon-folder icon-folder",
-              active: true
+              icon: 'storage-icon icon_help_center',
+              value: 'help_center',
+              label: 'go_help'
             },
             {
-              id: 5368871425,
-              name: "Letmesee11",
-              owner_id: 536572161,
-              owner_uid: "u536572161u",
-              owner: "paulxiaooo@gmail.com",
-              storage_id: 5208259329,
-              storagetype: "SYSTEM",
-              storageservicetype: "AMAZON",
-              size: 6054108,
-              sizelimit: -1,
-              parent_id: 5208259585,
-              type: "folder",
-              created: 1572509899,
-              modified: 1577427908,
-              trashed: "N",
-              moved_to_trash: "N",
-              permissionbitmask: 255,
-              usershare_id: null,
-              publicshare_id: 235431169,
-              shareuser_ids: [],
-              users: [],
-              contact_ids: [],
-              contacts: [],
-              permissionbitmasks: [],
-              isprivates: [],
-              messages: [],
-              twofactoreds: [],
-              end_dates: [],
-              list_ids: [],
-              dogtag_ids: [],
-              haschild: "Y",
-              anymodified: 1577428711399648,
-              twofactored: "N",
-              secured: "N",
-              parent_twofactored_ids: [],
-              parent_twofactored_shareuser_ids: [],
-              cnt_picture: 1,
-              cnt_spreadsheet: 0,
-              cnt_video: 0,
-              cnt_text: 0,
-              cnt_pdf: 0,
-              cnt_presentation: 0,
-              cnt_audio: 0,
-              cnt_other: 0,
-              netsuiteid: null,
-              assigned: "N",
-              children: [
-                {
-                  id: 5393364481,
-                  name: "test1",
-                  owner_id: 536572161,
-                  owner_uid: "u536572161u",
-                  owner: "paulxiaooo@gmail.com",
-                  storage_id: 5208259329,
-                  storagetype: "SYSTEM",
-                  storageservicetype: "AMAZON",
-                  size: 0,
-                  sizelimit: -1,
-                  parent_id: 5368871425,
-                  type: "folder",
-                  created: 1575268612,
-                  modified: 1577242913,
-                  trashed: "N",
-                  moved_to_trash: "N",
-                  permissionbitmask: 255,
-                  usershare_id: null,
-                  publicshare_id: null,
-                  shareuser_ids: [],
-                  users: [],
-                  contact_ids: [],
-                  contacts: [],
-                  permissionbitmasks: [],
-                  isprivates: [],
-                  messages: [],
-                  twofactoreds: [],
-                  end_dates: [],
-                  list_ids: [],
-                  dogtag_ids: [],
-                  haschild: "N",
-                  anymodified: 1577420391952915,
-                  twofactored: "N",
-                  secured: "N",
-                  parent_twofactored_ids: [],
-                  parent_twofactored_shareuser_ids: [],
-                  cnt_picture: 0,
-                  cnt_spreadsheet: 0,
-                  cnt_video: 0,
-                  cnt_text: 0,
-                  cnt_pdf: 0,
-                  cnt_presentation: 0,
-                  cnt_audio: 0,
-                  cnt_other: 0,
-                  netsuiteid: null,
-                  assigned: "N",
-                  children: null,
-                  level: 3,
-                  icon: " icon-folder",
-                  active: true
-                },
-                {
-                  id: 5384265985,
-                  name: "test2",
-                  owner_id: 536572161,
-                  owner_uid: "u536572161u",
-                  owner: "paulxiaooo@gmail.com",
-                  storage_id: 5208259329,
-                  storagetype: "SYSTEM",
-                  storageservicetype: "AMAZON",
-                  size: 0,
-                  sizelimit: -1,
-                  parent_id: 5368871425,
-                  type: "folder",
-                  created: 1574059830,
-                  modified: 1577426998,
-                  trashed: "N",
-                  moved_to_trash: "N",
-                  permissionbitmask: 255,
-                  usershare_id: null,
-                  publicshare_id: null,
-                  shareuser_ids: [],
-                  users: [],
-                  contact_ids: [],
-                  contacts: [],
-                  permissionbitmasks: [],
-                  isprivates: [],
-                  messages: [],
-                  twofactoreds: [],
-                  end_dates: [],
-                  list_ids: [],
-                  dogtag_ids: [],
-                  haschild: "N",
-                  anymodified: 1577426998795881,
-                  twofactored: "N",
-                  secured: "N",
-                  parent_twofactored_ids: [],
-                  parent_twofactored_shareuser_ids: [],
-                  cnt_picture: 0,
-                  cnt_spreadsheet: 0,
-                  cnt_video: 0,
-                  cnt_text: 0,
-                  cnt_pdf: 0,
-                  cnt_presentation: 0,
-                  cnt_audio: 0,
-                  cnt_other: 0,
-                  netsuiteid: null,
-                  assigned: "N",
-                  children: null,
-                  level: 3,
-                  icon: " icon-folder",
-                  active: true
-                },
-                {
-                  id: 5368871681,
-                  name: "谢谢23",
-                  owner_id: 536572161,
-                  owner_uid: "u536572161u",
-                  owner: "paulxiaooo@gmail.com",
-                  storage_id: 5208259329,
-                  storagetype: "SYSTEM",
-                  storageservicetype: "AMAZON",
-                  size: 6054108,
-                  sizelimit: -1,
-                  parent_id: 5368871425,
-                  type: "folder",
-                  created: 1572509903,
-                  modified: 1577325234,
-                  trashed: "N",
-                  moved_to_trash: "N",
-                  permissionbitmask: 255,
-                  usershare_id: null,
-                  publicshare_id: null,
-                  shareuser_ids: [],
-                  users: [],
-                  contact_ids: [],
-                  contacts: [],
-                  permissionbitmasks: [],
-                  isprivates: [],
-                  messages: [],
-                  twofactoreds: [],
-                  end_dates: [],
-                  list_ids: [],
-                  dogtag_ids: [],
-                  haschild: "N",
-                  anymodified: 1577325234183802,
-                  twofactored: "N",
-                  secured: "N",
-                  parent_twofactored_ids: [],
-                  parent_twofactored_shareuser_ids: [],
-                  cnt_picture: 1,
-                  cnt_spreadsheet: 0,
-                  cnt_video: 0,
-                  cnt_text: 0,
-                  cnt_pdf: 0,
-                  cnt_presentation: 0,
-                  cnt_audio: 0,
-                  cnt_other: 0,
-                  netsuiteid: null,
-                  assigned: "N",
-                  children: null,
-                  level: 3,
-                  icon: " icon-folder",
-                  active: true
-                }
-              ],
-              level: 2,
-              icon: " icon-folder icon-folder",
-              expanded: false,
-              active: true
-            },
-            {
-              id: 5409084161,
-              name: "TT",
-              owner_id: 536572161,
-              owner_uid: "u536572161u",
-              owner: "paulxiaooo@gmail.com",
-              storage_id: 5208259329,
-              storagetype: "SYSTEM",
-              storageservicetype: "AMAZON",
-              size: 0,
-              sizelimit: -1,
-              parent_id: 5208259585,
-              type: "folder",
-              created: 1577427923,
-              modified: 1577427923,
-              trashed: "N",
-              moved_to_trash: "N",
-              permissionbitmask: 255,
-              usershare_id: null,
-              publicshare_id: null,
-              shareuser_ids: [],
-              users: [],
-              contact_ids: [],
-              contacts: [],
-              permissionbitmasks: [],
-              isprivates: [],
-              messages: [],
-              twofactoreds: [],
-              end_dates: [],
-              list_ids: [],
-              dogtag_ids: [],
-              haschild: "N",
-              anymodified: 1577427923530237,
-              twofactored: "N",
-              secured: "N",
-              parent_twofactored_ids: [],
-              parent_twofactored_shareuser_ids: [],
-              cnt_picture: 0,
-              cnt_spreadsheet: 0,
-              cnt_video: 0,
-              cnt_text: 0,
-              cnt_pdf: 0,
-              cnt_presentation: 0,
-              cnt_audio: 0,
-              cnt_other: 0,
-              netsuiteid: null,
-              assigned: "N",
-              children: null,
-              level: 2,
-              icon: " icon-folder icon-folder",
-              active: true
+              icon: 'storage-icon icon_turn_off',
+              value: 'turn_off',
+              label: 'turn_off_device'
             }
           ],
-          type: "storage",
-          level: 1,
-          icon:
-            " icon-storage icon-storage icon-storage icon-storage icon-storage",
-          expanded: false,
-          active: true
+          onCommand: cmd => {
+            console.log(cmd)
+          },
+          onExpand: (node, vm) => {
+            if (vm.expanded) {
+              const children = this.getChildNode(node)
+              if (children.length) {
+                node.children = children
+              } else {
+                vm.loading = true
+                this.$store.dispatch(node.id == 'device' ? 'GET_TA_ROOT' : node.type == 'd' ? 'GET_PINNED_CHILDREN' : 'GET_STORAGE_CHILDREN', node).then(() => {
+                  node.children = this.getChildNode(node)
+                  vm.loading = false
+                }).catch(e => {
+                  vm.loading = false
+                })
+              }
+            }
+          }
+        },
+        {
+          id: 'other_storage',
+          name: 'other_storage',
+          type: 'other-storage',
+          active: false,
+          expanded: true,
+          children: [
+            {
+              id: 'googledrive',
+              name: 'google_drive',
+              type: 'googledrive',
+              dropdown: [
+                {
+                  value: 'googledrive',
+                  label: 'add_google_drive'
+                }
+              ],
+              onClick: () => {
+                console.log('googledrive')
+              }
+            },
+            {
+              id: 'dropbox',
+              name: 'dropbox',
+              type: 'dropbox',
+              dropdown: [
+                {
+                  value: 'dropbox',
+                  label: 'add_dropbox'
+                }
+              ],
+              onClick: () => {
+                console.log('dropbox')
+              }
+            },
+            {
+              id: 'onedrive',
+              name: 'onedrive',
+              type: 'onedrive',
+              dropdown: [
+                {
+                  value: 'onedrive',
+                  label: 'add_onedrive'
+                }
+              ],
+              onClick: () => {
+                console.log('onedrive')
+              }
+            }
+          ],
+          onCommand: cmd => {
+            console.log(cmd)
+          }
+        },
+        {
+          id: 'shared',
+          name: 'shared',
+          type: 'shared',
+          onClick: () => {
+            console.log(this)
+          }
+        },
+        {
+          id: 'list',
+          name: 'lists',
+          type: 'list',
+          onClick: () => {
+            console.log(this)
+          }
+        },
+        {
+          id: 'backup',
+          name: 'backups',
+          type: 'backup',
+          onClick: () => {
+            console.log(this)
+          }
+        },
+        {
+          id: 'file_backup',
+          name: 'file_backups',
+          type: 'list',
+          onClick: () => {
+            console.log(this)
+          }
+        },
+        {
+          id: 'trash',
+          name: 'trash',
+          type: 'trash',
+          onClick: () => {
+            console.log(this)
+          }
         }
-      ]
-    };
+      ],
+      newdata: {
+
+      }
+    }
   },
   computed: {
-    ...mapGetters(["folders"])
+    folders() {
+      return [
+        this.newdata,
+        ...this.tree
+
+      ]
+    }
+  },
+  watch: {
+    folders(val) {
+      console.log(val)
+    }
   },
   created() {
-    this.init();
+    this.init()
   },
   methods: {
     init() {
-      this.$store.commit("INIT_FOLDER");
-      this.add(this.data[0]);
+      console.log(this.folders)
     },
     add(node) {
-      this.$store.commit("ADD_FOLDER", node);
+      this.newdata.name = '2222232'
+    },
+    update(node) {
+
     }
   }
-};
+}
 </script>
 
 <style>

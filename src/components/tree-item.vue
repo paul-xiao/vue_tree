@@ -1,44 +1,50 @@
 
 <template>
     <ul class="tree">
-      <li v-for="item in folders" :key="item.id">
+      <li v-for="item in data" :key="item.id">
         {{item.name}}
+        <button>add children</button>
+        <button>rename</button>
+        <button>delete</button>
          <template>
-           <tree-item :data="data.children"></tree-item>
+           <tree-item :data="item.children"></tree-item>
          </template>
       </li>
     </ul>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
-  name: "TreeItem",
+  name: 'TreeItem',
   data() {
     return {
-     
-    };
+
+    }
   },
-  computed: {
-    ...mapGetters(["folders"])
+  props: {
+    data: {
+      type: Array,
+      default: () => []
+    }
   },
   created() {
-    this.init();
+    // this.init()
   },
   methods: {
-    init() {
-      this.$store.commit("INIT_FOLDER");
-      this.add(this.data[0]);
-    },
-    add(node) {
-      this.$store.commit("ADD_FOLDER", node);
-    }
+
   }
-};
+}
 </script>
 
 <style>
 .tree {
   text-align: left;
+
+}
+li{
+  margin: 10px 0;
+}
+button{
+margin: 0 5px;
 }
 </style>
